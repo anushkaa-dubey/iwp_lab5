@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Technologies Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .name {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .score-container {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .timer {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .question-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .option {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            background-color: #f1f8fe;
+            border-color: #3498db;
+        }
+        .option input {
+            margin-right: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        #submit {
+            background-color: #27ae60;
+            color: white;
+        }
+        #submit:hover {
+            background-color: #219653;
+        }
+        #reset {
+            background-color: #e74c3c;
+            color: white;
+        }
+        #reset:hover {
+            background-color: #c0392b;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .correct {
+            background-color: #d5f5e3;
+            color: #27ae60;
+        }
+        .incorrect {
+            background-color: #fadbd8;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <div class="name">Anushka Dubey 23BCE11492</div>
+            <h1>Web Technologies Quiz</h1>
+        </div>
+        
+        <div class="score-container" id="score-container">
+            <div class="score" id="score-display"></div>
+        </div>
+        
+        <div class="timer">Time remaining: <span id="time">60</span> seconds</div>
+        
+        <div id="quiz">
+            <div class="question-box" id="q1">
+                <div class="question">1. What does HTML stand for?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q1" id="q1a" value="a">
+                        <label for="q1a">Hyper Text Markup Language</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" id="q1b" value="b">
+                        <label for="q1b">High Text Machine Language</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" id="q1c" value="c">
+                        <label for="q1c">Hyperlink and Text Markup Language</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" id="q1d" value="d">
+                        <label for="q1d">Home Tool Markup Language</label>
+                    </div>
+                </div>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+            
+            <div class="question-box" id="q2">
+                <div class="question">2. What does CSS stand for?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q2" id="q2a" value="a">
+                        <label for="q2a">Creative Style Sheets</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" id="q2b" value="b">
+                        <label for="q2b">Cascading Style Sheets</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" id="q2c" value="c">
+                        <label for="q2c">Computer Style Sheets</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" id="q2d" value="d">
+                        <label for="q2d">Colorful Style Sheets</label>
+                    </div>
+                </div>
+                <div class="feedback" id="feedback2"></div>
+            </div>
+            
+            <div class="question-box" id="q3">
+                <div class="question">3. Which language runs in a web browser?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q3" id="q3a" value="a">
+                        <label for="q3a">Java</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" id="q3b" value="b">
+                        <label for="q3b">C</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" id="q3c" value="c">
+                        <label for="q3c">Python</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" id="q3d" value="d">
+                        <label for="q3d">JavaScript</label>
+                    </div>
+                </div>
+                <div class="feedback" id="feedback3"></div>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button id="submit">Submit</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "a",
+            q2: "b",
+            q3: "d"
+        };
+        
+        let timeLeft = 60;
+        let timer;
+        
+        function startTimer() {
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time').textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('submit').disabled = true;
+                    document.getElementById('time').textContent = "0";
+                    document.getElementById('score-container').style.display = "block";
+                    document.getElementById('score-display').textContent = "Time over!";
+                }
+            }, 1000);
+        }
+        
+        document.getElementById('submit').addEventListener('click', () => {
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            
+            for (let question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback${question.slice(1)}`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[question]) {
+                        feedbackElement.textContent = "Correct!";
+                        feedbackElement.className = "feedback correct";
+                        score++;
+                    } else {
+                        feedbackElement.textContent = "Try Again!";
+                        feedbackElement.className = "feedback incorrect";
+                    }
+                } else {
+                    feedbackElement.textContent = "Not answered!";
+                    feedbackElement.className = "feedback incorrect";
+                }
+            }
+            
+            document.getElementById('score-container').style.display = "block";
+            document.getElementById('score-display').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('submit').disabled = true;
+            clearInterval(timer);
+        });
+        
+        document.getElementById('reset').addEventListener('click', () => {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.checked = false;
+            });
+            
+            const feedbackElements = document.querySelectorAll('.feedback');
+            feedbackElements.forEach(element => {
+                element.textContent = "";
+                element.className = "feedback";
+            });
+            
+            document.getElementById('score-container').style.display = "none";
+            document.getElementById('submit').disabled = false;
+            
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById('time').textContent = timeLeft;
+            startTimer();
+        });
+        
+        startTimer();
+    </script>
+</body>
+</html>
